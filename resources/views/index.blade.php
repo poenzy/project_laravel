@@ -1,30 +1,79 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Selamat Datang</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luma Haven</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #e250f2, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header-bg {
+            background-image: url('/car.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body class="antialiased">
-    <div class="relative min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        <div class="max-w-7xl mx-auto p-6 lg:p-8">
-            <div class="flex justify-center">
-                <h1 class="text-4xl font-bold text-gray-800 dark:text-white">Selamat Datang, Fachrozzi Rizky Wibowo!</h1>
+    <div class="header-bg h-full min-h-screen text-white flex flex-col items-center justify-between py-16">
+        <div class="overlay"></div>
+
+        <header class="relative z-10 p-8 flex justify-between w-full">
+            <div class="text-3xl font-bold">WEB 2</div>
+        </header>
+        
+        <main class="relative z-10 text-center flex-grow">
+            <p class="text-2xl mb-4 font-light">WELCOME</p>
+            <h1 class="text-8xl font-bold text-gradient">MY NAME<br>FACHROZZI</h1>
+        </main>
+        
+        <section class="relative z-10 p-8 w-full">
+            <h2 class="text-3xl font-bold text-center mb-6">Data Dummy</h2>
+            <div class="max-w-4xl mx-auto overflow-x-auto">
+                <table class="w-full text-left rounded-lg overflow-hidden border-collapse">
+                    <thead class="bg-gray-700 text-gray-200">
+                        <tr>
+                            <th class="p-4 font-semibold">Nama</th>
+                            <th class="p-4 font-semibold">Usia</th>
+                            <th class="p-4 font-semibold">Kota</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-700">
+                        {{-- Bagian ini mengambil data dari database --}}
+                        @foreach($dummyData as $data)
+                        <tr class="hover:bg-gray-800 transition-colors">
+                            <td class="p-4">{{ $data->name }}</td>
+                            <td class="p-4">{{ $data->age }}</td>
+                            <td class="p-4">{{ $data->city }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <div class="mt-8 text-center">
-                <p class="text-lg text-gray-600 dark:text-gray-400">
-                    Ini adalah tugas pertama Anda. Semangat!
-                </p>
-            </div>
-            <div class="mt-6 flex justify-center">
-                <a href="https://laravel.com/docs" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Dokumentasi Laravel
-                </a>
-            </div>
-        </div>
+        </section>
+
+        <section class="relative z-10 p-8 flex items-center justify-center">
+            <h2 class="text-6xl font-bold text-gradient">THE MAGIC OF CODE</h2>
+        </section>
     </div>
 </body>
 </html>
